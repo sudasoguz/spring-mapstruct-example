@@ -2,6 +2,7 @@ package com.example.springmapstructexample.serviceImpl;
 
 import com.example.springmapstructexample.dto.CustomerInfoDto;
 import com.example.springmapstructexample.entity.CustomerEntity;
+import com.example.springmapstructexample.mapper.CustomerMapper;
 import com.example.springmapstructexample.repository.CustomerRepository;
 import com.example.springmapstructexample.service.ICustomerService;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,6 @@ public class CustomerService implements ICustomerService {
   @Override
   public CustomerInfoDto getCustomerInfoById(long customerId) {
     CustomerEntity customerEntity = customerRepository.findById(customerId).orElse(null);
-    return null;
+    return CustomerMapper.INSTANCE.customerToCustomerInfo(customerEntity);
   }
 }
